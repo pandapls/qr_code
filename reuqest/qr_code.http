@@ -1,0 +1,36 @@
+@baseUrl = http://127.0.0.1:3000
+@token = sb8FSIsu
+
+### 创建二维码
+POST {{baseUrl}}/v1/qr_code
+Content-Type: application/json
+
+{
+  "url": "https://example.com"
+}
+
+### 查询原始 URL
+GET {{baseUrl}}/v1/qr_code/{{token}}
+
+### 更新二维码
+PUT {{baseUrl}}/v1/qr_code/{{token}}
+Content-Type: application/json
+
+{
+  "url": "https://baidu.com"
+}
+
+### 获取二维码图片地址
+GET {{baseUrl}}/v1/qr_code_image/{{token}}?dimension=300&color=000000&border=10
+
+### 获取二维码 SVG
+GET {{baseUrl}}/assets/qr/{{token}}?dimension=300&color=000000&border=10
+
+### 跳转到原始 URL
+GET {{baseUrl}}/{{token}}
+
+### 删除二维码
+DELETE {{baseUrl}}/v1/qr_code/{{token}}
+
+### 删除后再次查询
+GET {{baseUrl}}/v1/qr_code/{{token}}
